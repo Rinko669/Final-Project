@@ -15,9 +15,10 @@
         <img src="suisegs232.png" alt="logo" />
         <span>WE OTAKU</span>
       </div>
+      <div class="menu-toggle"><i class="fa-solid fa-bars fa-2xs"></i></div>
       <nav>
-        <ul>
-          <li><a href="#" class="active">Home</a></li>
+        <ul>  
+          <li><a href="index.html" class="active">Home</a></li>
           <li><a href="#">Anime Merch</a></li>
           <li><a href="#">Trading Cards</a></li>
           <li><a href="#">More</a></li>
@@ -26,30 +27,156 @@
           <li><a href="#">Cart <i class="fa-solid fa-shopping-cart fa-xs"></i></a></li>
         </ul>
       </nav>
-      <div class="menu-toggle"><i class="fa-solid fa-bars fa-2xs"></i></div>
     </header>
 
-
     <main>
-      <div class="banner">
+      <div class="banner" id="banner">
         <div class="banner-content">
           <h1>Browse the most <br>
             trusted anime shop of yours</h1>
-          <a href="#" class="button">View more</a>
+            <h1 class="japanese-word">最も閲覧する あなたの信頼できるアニメショップ</h1>
+          <a href="https://www.youtube.com/watch?v=NyUTYwZe_l4&t=5m11s" class="button">View more</a>
         </div>
         <img src="sarap mo.jpg" alt="ayaka" class="banner-image">
-      </div>
+      </div> 
     </main>
     
-    
 
-    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('.menu-toggle').click(function(){
-          $('nav').toggleClass('active');
-        });
-      });
-    </script>
+    <section class="anime-merch">
+      <div class="container">
+        <h2>Anime Merchandise</h2>
+        <div class="merch-items">
+          <div class="merch-item">
+            <img src="Dia.png" alt="merch item 1" />
+            <h3>Merch Item 1</h3>
+            <p>Price: $20</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="merch-item">
+            <img src="Dia.png" alt="merch item 2" />
+            <h3>Merch Item 2</h3>
+            <p>Price: $25</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="merch-item">
+            <img src="Dia.png" alt="merch item 3" />
+            <h3>Merch Item 3</h3>
+            <p>Price: $30</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="merch-item">
+            <img src="Dia.png" alt="merch item 4" />
+            <h3>Merch Item 4</h3>
+            <p>Price: $35</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="merch-item">
+            <div class="image-zoom">
+              <img id="merch-img" src="Dia.png" alt="merch item 5" onclick="changeImage()" />
+            </div>
+            <h3>Dia Kurosawa: Blu-ray Jacket Ver.</h3>
+            <div class="price-wrapper">
+              <p>Price: $40</p>
+            </div>
+            <button class="add-to-cart-btn" onclick="showNotification('Merch Item 5', 'has been added to your cart.')">Add to Cart</button>
+          
+            <button class="product-info-btn" onclick="showProductInfo()">Product Info</button>
+          </div>
+          <div id="notification" class="notification">
+            <p id="notification-text"></p>
+            <button class="close-btn" onclick="hideNotification()">X</button>
+          </div>
+          
+          <div id="notification" class="notification">
+            <p id="notification-text"></p>
+          </div>
+          
+          <script>
+            function changeImage() {
+              var img = document.getElementById("merch-img");
+              var indicator = document.getElementById("image-number");
+              if (img.src.match("Dia.png")) {
+                img.src = "dia back.png";
+                indicator.innerHTML = "2";
+              } else {
+                img.src = "Dia.png";
+                indicator.innerHTML = "1";
+              }
+            }
+          
+            
+            function hideNotification() {
+              var notification = document.getElementById("notification");
+              notification.style.display = "none";
+            }
+            
+        
+            function showNotification(name, info) {
+              var notification = document.getElementById("notification");
+              var notificationText = document.getElementById("notification-text");
+              notificationText.innerHTML = name + " " + info;
+              notification.style.display = "block";
+              
+              // Add event listener to notification to hide it when clicked
+              notification.addEventListener("click", function() {
+                notification.style.display = "none";
+              });
+            }
+            
+            function showProductInfo() {
+              var name = "<strong>Dia Kurosawa: Blu-ray Jacket Ver.</strong><br>";
+              var info = `<strong>Product Details</strong><br>
+              <strong>Product Name</strong><br>
+                          Dia Kurosawa: Blu-ray Jacket Ver.<br>
+                          <strong>Series</strong><br>
+                          LoveLive!Sunshine!!<br>
+                          Manufacturer<br>
+                          With Fans!<br>
+                          Category<br>
+                          1/7th Scale<br>
+                          Price<br>
+                          ¥16,093<br>
+                          Release Date<br>
+                          2019/09<br>
+                          Specifications<br>
+                          Painted 1/7th scale ABS&PVC complete product<br>
+                          with stand included. Approximately 215mm in height.<br>
+                          <span class="bold-text">Sculptor</span><br>
+                          Hiro<br>
+                          Paintwork<br>
+                          Hiro<br>
+                          Cooperation<br>
+                          Nobuhiro Saitou<br>
+                          Planning/Production<br>
+                          Good Smile Company<br>
+                          Release by<br>
+                          BANDAI NAMCO ARTS<br>
+                          Distributed by<br>
+                          Good Smile Company.`;
+              showNotification(name, info);
+            }
+            
+          </script>
+          
+          <style>
+            .notification {
+              position: fixed;
+              bottom: 5px;
+              right: 5px;
+              background-color: white;
+              color: b;
+              padding: 10px;
+              font-size: 14px;
+              overflow-wrap: break-word;
+              width: 800px; /* add width here */
+              height:680px;
+            }
+            
+                        
+            
+          </style>
+          
+
+    <script src="script.js"></script>
   </body>
 </html>
